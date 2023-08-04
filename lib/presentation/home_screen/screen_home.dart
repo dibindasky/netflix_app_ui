@@ -37,6 +37,9 @@ class ScreenHome extends StatelessWidget {
                     ),
                     ElevatedButton.icon(
                         style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(kWhite),
+                          iconColor: MaterialStatePropertyAll(kBlack),
+                          textStyle: MaterialStatePropertyAll(TextStyle(color: kBlack)),
                           shape: MaterialStatePropertyAll(
                             BeveledRectangleBorder(),
                           ),
