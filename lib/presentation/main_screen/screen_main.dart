@@ -19,9 +19,11 @@ class ScreenMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ValueListenableBuilder(
-          valueListenable: selectedIndexNotoifier,
-          builder: (context, index, child) => _bottomList[index],
+        body: SafeArea(
+          child: ValueListenableBuilder(
+            valueListenable: selectedIndexNotoifier,
+            builder: (context, index, child) => _bottomList[index],
+          ),
         ),
         bottomNavigationBar: const BottomNavigationWidget());
   }
