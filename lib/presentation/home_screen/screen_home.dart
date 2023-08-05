@@ -5,7 +5,7 @@ import 'widgets/appbar_screen_home.dart';
 import 'widgets/catogrised_list_maker.dart';
 import 'widgets/main_screen_firsttile_widget.dart';
 
-ValueNotifier<bool> scrollDirectionNotifier = ValueNotifier(false);
+ValueNotifier<bool> scrollDirectionNotifier = ValueNotifier(true);
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -40,6 +40,14 @@ class ScreenHome extends StatelessWidget {
                 kheigth10,
                 CatograisedListMaker(
                     headline: 'Top 10 TV Shows in India Today', top10: true),
+                kheigth10,
+                CatograisedListMaker(
+                  headline: 'South Indian Movies',
+                ),
+                kheigth10,
+                CatograisedListMaker(
+                  headline: 'Drama',
+                ),
               ],
             ),
             visible ? const AppbarHomeScreen() : kheigth10
