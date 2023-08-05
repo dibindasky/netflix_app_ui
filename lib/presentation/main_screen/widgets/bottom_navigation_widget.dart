@@ -24,7 +24,7 @@ class BottomNavigationWidget extends StatelessWidget {
             BottomNavigationBarItem(icon: Icon(Icons.photo_library_outlined), label: 'News & Hot'),
             BottomNavigationBarItem(icon: Icon(Icons.tag_faces_outlined), label: 'Fast Laughf'),
             BottomNavigationBarItem(icon: Icon(Icons.search_sharp), label: 'Search'),
-            BottomNavigationBarItem(icon: Icon(Icons.download_for_offline_outlined), label: 'Downloads'),
+            BottomNavigationBarItem(icon: Icon(Icons.download), label: 'Downloads'),
           ]),
     );
   }

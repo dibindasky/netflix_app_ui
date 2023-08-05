@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../core/colors/kcolors.dart';
 import '../../core/sizes.dart';
 
 class AppbarSidecastButtons extends StatelessWidget {
@@ -13,10 +12,10 @@ class AppbarSidecastButtons extends StatelessWidget {
     return Row(
       children: [
         kwidth10,
-        Icon(Icons.cast),
+        const Icon(Icons.cast),
         kwidth10,
         Container(
-          color: kgrey,
+          color: const Color.fromARGB(255, 11, 91, 228),
           height: size.height * 0.03,
           width: size.height * 0.03,
         ),
