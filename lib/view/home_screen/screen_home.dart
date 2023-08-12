@@ -17,11 +17,9 @@ class ScreenHome extends StatelessWidget {
           NotificationListener<UserScrollNotification>(
         onNotification: (notification) {
           final ScrollDirection direction = notification.direction;
-          scrollDirectionNotifier.value = direction == ScrollDirection.forward
-              // ||
-              //         direction == ScrollDirection.idle
-              ? true
-              : false;
+          //check the direction of the scroll and setting the appbar
+          scrollDirectionNotifier.value = direction == ScrollDirection.forward ;
+              // || direction == ScrollDirection.idle;
           return true;
         },
         child: Stack(

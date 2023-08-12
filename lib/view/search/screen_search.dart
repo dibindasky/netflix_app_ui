@@ -28,7 +28,6 @@ class _ScreenSearchState extends State<ScreenSearch> {
 
   getTopSearches()async{
     final list= await topSearchApi.getTopSearches();
-      // setState(() {for(var v in list){if(v.posterPath!=null)topSearch.add(v);}});
       setState(() {topSearch=list;});
   }
 
@@ -69,7 +68,7 @@ class _ScreenSearchState extends State<ScreenSearch> {
                       crossAxisCount: 3,
                     ),
                     itemCount: 21,
-                    itemBuilder: (context, index) => CardMain(),
+                    itemBuilder: (context, index) => const CardMain(),
                   );
                 } else {
                   return ListView.separated(

@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/controller/news_and_hot/everyone_watching_api.dart';
 import 'package:netflix/core/colors/kcolors.dart';
 import 'package:netflix/core/sizes.dart';
+import 'package:netflix/model/news_and_hot/coming_soon_model.dart';
+import '../../controller/news_and_hot/coming_soon_api.dart';
+import '../../model/news_and_hot/everyone_watching_model.dart';
 import '../widgets/appbar_sidecast_buttons.dart';
 import 'widgets/hot_and_new_list.dart';
 
-class ScreenNewsAndHot extends StatelessWidget {
+class ScreenNewsAndHot extends StatefulWidget {
   const ScreenNewsAndHot({super.key});
+
+  @override
+  State<ScreenNewsAndHot> createState() => _ScreenNewsAndHotState();
+}
+
+class _ScreenNewsAndHotState extends State<ScreenNewsAndHot> {
+
+  final ComingSoonApi comingSoonApi=ComingSoonApi();
+  List<UpComingModel> upComingList=[];
+  List<TrendingWatchingModel> trendingWatchingList=[];
+  final EveryoneWatchingApi everyoneWatchingApi = EveryoneWatchingApi();
+
+  @override
+  void initState() {
+    getUpComing();
+    super.initState();
+  }
+  getUpComing()async{
+    upComingList = await comingSoonApi.getUpComing();
+    trendingWatchingList =await everyoneWatchingApi.getTrendingWatching();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +60,9 @@ class ScreenNewsAndHot extends StatelessWidget {
                 ),
               ]),
         ),
-        body: const TabBarView(children: [
-          NewAndHotListWidget(toComingSoon: true),
-          NewAndHotListWidget(),
+        body: TabBarView(children: [
+          NewAndHotListWidget(toComingSoon: true,displayList: upComingList),
+          NewAndHotListWidget(displayList: trendingWatchingList),
         ]),
       ),
     );

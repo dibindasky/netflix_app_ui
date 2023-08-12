@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/model/news_and_hot/coming_soon_model.dart';
 
 import '../../../core/sizes.dart';
 import '../../widgets/text_icon_widget.dart';
@@ -7,7 +8,10 @@ import 'image_card_hot_new.dart';
 class ComingSoonTile extends StatelessWidget {
   const ComingSoonTile({
     super.key,
+    required this.model,
   });
+
+  final UpComingModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +36,27 @@ class ComingSoonTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             kheigth20,
-            ImageCardHotAndNew(size: size, fromComingSoon: true),
+            ImageCardHotAndNew(
+                size: size, fromComingSoon: true, image: model.backgroundPath),
             SizedBox(
               width: size.width * 0.90,
               height: size.height * 0.05,
-              child: const Row(
+              child: Row(
                 children: [
                   Text(
-                    'Barbie',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    model.title == null
+                        ? ''
+                        : model.title!.length > 23
+                            ? '${model.title!.substring(0, 22)}..'
+                            : model.title!,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  Spacer(),
-                  TextIconWidget(icon: Icons.alarm_on_sharp, text: 'Remind Me'),
+                  const Spacer(),
+                  const TextIconWidget(
+                      icon: Icons.alarm_on_sharp, text: 'Remind Me'),
                   kwidth10,
-                  TextIconWidget(
+                  const TextIconWidget(
                       icon: Icons.info_outline_rounded, text: 'info'),
                   kwidth10
                 ],
@@ -54,9 +65,9 @@ class ComingSoonTile extends StatelessWidget {
             kheigth20,
             SizedBox(
               width: size.width * 0.90,
-              child: const Text(
-                'Try correcting the name to the name of an existing getter, or defining a getter or field named.Try correcting the name to the name of an existing getter, or defining a getter or field named.Try correcting the name to the name of an existing getter, or defining a getter or field named.Try correcting the name to the name of an existing getter, or defining a getter or field named',
-                style: TextStyle(fontSize: 11),
+              child: Text(
+                model.overview ?? '',
+                style: const TextStyle(fontSize: 11),
               ),
             ),
             kheigth20

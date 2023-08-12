@@ -6,17 +6,18 @@ import 'everyone_watch_tile.dart';
 class NewAndHotListWidget extends StatelessWidget {
   const NewAndHotListWidget({
     super.key,
-    this.toComingSoon = false,
+    this.toComingSoon = false, required this.displayList,
   });
 
   final bool toComingSoon;
+  final List<dynamic> displayList;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
         itemBuilder: (context, index) =>
-            toComingSoon ? const ComingSoonTile() : const EveryoneWatchTile(),
+            toComingSoon ? ComingSoonTile(model: displayList[index],) : EveryoneWatchTile(model: displayList[index],),
         separatorBuilder: (context, index) => kheigth10,
-        itemCount: 10);
+        itemCount: displayList.length);
   }
 }
