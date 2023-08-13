@@ -11,7 +11,7 @@ class EveryoneWatchingApi{
   Api api = Api();
   Future<List<TrendingWatchingModel>> getTrendingWatching() async {
     List<TrendingWatchingModel> array = [];
-    String apiUrl = url.baseUrl + url.nowPlaying + api.apiKey;
+    String apiUrl = url.baseUrl + url.trending + api.apiKey;
     final response = await http.get(Uri.parse(apiUrl));
       final json = jsonDecode(response.body) as Map<String, dynamic>;
       array = TrendingWatchingModel.toListTrendingModel(json['results']);

@@ -10,7 +10,7 @@ class DownloadApi {
   Url url = Url();
   Api api = Api();
   Future<List<String>?> getDownloadImages() async {
-    String apiUrl = url.baseUrl + url.trending + api.apiKey;
+    String apiUrl = url.baseUrl + url.nowPlaying + api.apiKey;
     final response = await http.get(Uri.parse(apiUrl));
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     TrendingApiModel tModel = TrendingApiModel.fromJson(json);
@@ -19,5 +19,13 @@ class DownloadApi {
       url.baseImageUrl + tModel.result![1].posterPath!,
       url.baseImageUrl + tModel.result![2].posterPath!
     ];
+  }
+    Future<List<TrendingModel>> getTrendingModels() async {
+    List<TrendingModel> array = [];
+    String apiUrl = url.baseUrl + url.upComing + api.apiKey;
+    final response = await http.get(Uri.parse(apiUrl));
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      array = TrendingModel.toListTrendingModel(json['results']);
+      return array;
   }
 }

@@ -3,17 +3,23 @@ import 'package:flutter/material.dart';
 import '../../../core/colors/kcolors.dart';
 import '../../../core/images/imageurl.dart';
 import '../../../core/sizes.dart';
+import '../../../core/url/urls.dart';
 
 class CardTop10 extends StatelessWidget {
-  const CardTop10({
+  CardTop10({
     super.key,
     required this.index,
+    required this.image,
   });
 
   final int index;
+  final String? image;
+  final Url url = Url();
 
   @override
   Widget build(BuildContext context) {
+    String img = '';
+    if (image != null) img = url.baseImageUrl + image!;
     final size = MediaQuery.of(context).size;
     return Stack(
       children: [
@@ -22,8 +28,8 @@ class CardTop10 extends StatelessWidget {
           decoration: BoxDecoration(
             color: kgrey,
             borderRadius: kradius20,
-            image: const DecorationImage(
-              image: NetworkImage(homeScreenTileImageTemp),
+            image: DecorationImage(
+              image: NetworkImage(img == '' ? emptyImage : img),
               fit: BoxFit.cover,
             ),
           ),

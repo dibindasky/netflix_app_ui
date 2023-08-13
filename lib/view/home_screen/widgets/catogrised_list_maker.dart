@@ -8,10 +8,12 @@ class CatograisedListMaker extends StatelessWidget {
     super.key,
     required this.headline,
     this.top10 = false,
+    required this.modelList,
   });
 
   final String headline;
   final bool top10;
+  final List<dynamic> modelList;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +32,14 @@ class CatograisedListMaker extends StatelessWidget {
             itemCount: top10 ? 10 : 20,
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) =>
-                top10 ? CardTop10(index: index + 1) : const CardMain(),
+            itemBuilder: (context, index) => top10
+                ? CardTop10(
+                    index: index + 1,
+                    image: modelList[index].posterPath,
+                  )
+                : CardMain(image: modelList[index].posterPath),
           ),
-        )
+        ),
       ],
     );
   }

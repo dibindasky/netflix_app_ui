@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/core/url/urls.dart';
 
 import '../../../core/colors/kcolors.dart';
 import '../../../core/images/imageurl.dart';
@@ -6,22 +7,27 @@ import '../../widgets/text_icon_widget.dart';
 import 'play_button_widget_home.dart';
 
 class MainScreenFirstVideoTile extends StatelessWidget {
-  const MainScreenFirstVideoTile({
-    super.key,
+  MainScreenFirstVideoTile({
+    super.key, required this.image,
   });
+
+  final Url url=Url();
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
+    String img='';
+    if(image != emptyImage)img=url.baseImageUrl+image!;
     final size = MediaQuery.of(context).size;
     return Stack(
       children: [
         Container(
           width: size.width,
           height: size.height * 0.70,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               color: kgrey,
               image: DecorationImage(
-                  image: NetworkImage(homeScreenMainImageTemp),
+                  image: NetworkImage(img=='' ? emptyImage : img),
                   fit: BoxFit.cover)),
         ),
         Positioned(

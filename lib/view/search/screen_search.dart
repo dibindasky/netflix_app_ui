@@ -7,6 +7,8 @@ import 'package:netflix/view/widgets/main_card.dart';
 import 'widgets/list_tile_search.dart';
 
 ValueNotifier<bool> search = ValueNotifier(false);
+List searchList = [];
+List temp = [];
 
 class ScreenSearch extends StatefulWidget {
   const ScreenSearch({super.key});
@@ -16,8 +18,7 @@ class ScreenSearch extends StatefulWidget {
 }
 
 class _ScreenSearchState extends State<ScreenSearch> {
-
-  List<TrendingModel> topSearch=[];
+  List<TrendingModel> topSearch = [];
   final TopSearchApi topSearchApi = TopSearchApi();
 
   @override
@@ -26,9 +27,11 @@ class _ScreenSearchState extends State<ScreenSearch> {
     super.initState();
   }
 
-  getTopSearches()async{
-    final list= await topSearchApi.getTopSearches();
-      setState(() {topSearch=list;});
+  getTopSearches() async {
+    final list = await topSearchApi.getTopSearches();
+    setState(() {
+      topSearch = list;
+    });
   }
 
   @override
@@ -44,6 +47,12 @@ class _ScreenSearchState extends State<ScreenSearch> {
               onChanged: (value) {
                 if (value.isNotEmpty) {
                   search.value = true;
+                  temp = searchList
+                      .where((model) => model.title
+                          .toLowerCase()
+                          .contains(value.toLowerCase()))
+                      .toList();
+                  setState(() {});
                 } else {
                   search.value = false;
                 }
@@ -67,13 +76,15 @@ class _ScreenSearchState extends State<ScreenSearch> {
                       mainAxisSpacing: 8,
                       crossAxisCount: 3,
                     ),
-                    itemCount: 21,
-                    itemBuilder: (context, index) => const CardMain(),
+                    itemCount: temp.length,
+                    itemBuilder: (context, index) =>
+                        CardMain(image: temp[index].posterPath),
                   );
                 } else {
                   return ListView.separated(
                     shrinkWrap: true,
-                    itemBuilder: (context, index) => ListTileSearch(size: size,model: topSearch[index]),
+                    itemBuilder: (context, index) =>
+                        ListTileSearch(size: size, model: topSearch[index]),
                     separatorBuilder: (context, index) => kheigth10,
                     itemCount: topSearch.length,
                   );
