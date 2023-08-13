@@ -27,6 +27,7 @@ class UpComingModel {
   String? overview;
   String? posterPath;
   String? mediaType;
+  String? releaseDate;
 
   UpComingModel({
     this.adult,
@@ -36,6 +37,7 @@ class UpComingModel {
     this.overview,
     this.posterPath,
     this.mediaType,
+    this.releaseDate,
   });
 
   UpComingModel.fromJson(Map<String, dynamic> json) {
@@ -46,6 +48,7 @@ class UpComingModel {
     overview = json['overview'];
     posterPath = json['poster_path'];
     mediaType = json['media_type'];
+    releaseDate = json['release_date'];
   }
 
   static List<UpComingModel> toListTrendingModel(List<dynamic> jsonList){

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:netflix/model/news_and_hot/coming_soon_model.dart';
 
 import '../../../core/sizes.dart';
@@ -16,19 +17,22 @@ class ComingSoonTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final date = DateFormat.d().format(DateTime.parse(model.releaseDate!));
+    final month = DateFormat.MMM().format(DateTime.parse(model.releaseDate!));
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
           width: size.width * 0.10,
-          child: const Column(children: [
+          child: Column(children: [
+            kheigth10,
             Text(
-              'Jul',
-              style: TextStyle(fontSize: 18),
+              month.substring(0, 3).toUpperCase(),
+              style: const TextStyle(fontSize: 18),
             ),
             Text(
-              '19',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              date,
+              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ]),
         ),

@@ -27,6 +27,7 @@ class TrendingWatchingModel {
   String? overview;
   String? posterPath;
   String? mediaType;
+  String? releaseDate;
 
   TrendingWatchingModel({
     this.adult,
@@ -36,6 +37,7 @@ class TrendingWatchingModel {
     this.overview,
     this.posterPath,
     this.mediaType,
+    this.releaseDate,
   });
 
   TrendingWatchingModel.fromJson(Map<String, dynamic> json) {
@@ -46,6 +48,7 @@ class TrendingWatchingModel {
     overview = json['overview'];
     posterPath = json['poster_path'];
     mediaType = json['media_type'];
+    releaseDate = json['release_date'];
   }
 
   static List<TrendingWatchingModel> toListTrendingModel(List<dynamic> jsonList){

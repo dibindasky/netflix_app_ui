@@ -6,6 +6,7 @@ class TopRatedModel {
   String? overview;
   String? posterPath;
   String? mediaType;
+  String? releaseDate;
 
   TopRatedModel({
     this.adult,
@@ -15,6 +16,7 @@ class TopRatedModel {
     this.overview,
     this.posterPath,
     this.mediaType,
+    this.releaseDate,
   });
 
   TopRatedModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class TopRatedModel {
     overview = json['overview'];
     posterPath = json['poster_path'];
     mediaType = json['media_type'];
+    releaseDate = json['release_date'];
   }
 
   static List<TopRatedModel> toListTrendingModel(List<dynamic> jsonList){

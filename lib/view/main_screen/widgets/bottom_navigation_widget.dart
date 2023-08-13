@@ -22,7 +22,7 @@ class BottomNavigationWidget extends StatelessWidget {
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.photo_library_outlined), label: 'News & Hot'),
+                icon: Icon(Icons.photo_library_outlined), label: 'New & Hot'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.tag_faces_outlined), label: 'Fast Laughf'),
             BottomNavigationBarItem(

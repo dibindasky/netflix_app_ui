@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/core/images/imageurl.dart';
 import 'package:netflix/core/sizes.dart';
 import 'package:netflix/view/news_and_hot/widgets/image_card_hot_new.dart';
 import 'package:netflix/view/widgets/text_icon_widget.dart';

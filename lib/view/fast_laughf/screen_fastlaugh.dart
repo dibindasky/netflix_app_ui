@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/core/images/video_urls.dart';
 import 'widgets/fast_laughf_page_view.dart';
 
 class ScreenFastLaughf extends StatelessWidget {
@@ -7,9 +8,15 @@ class ScreenFastLaughf extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: PageView(
-      scrollDirection: Axis.vertical,
-      children: List.generate(20, (index) => const PageFastLaughWidget()),
-    ));
+      body: PageView(
+        scrollDirection: Axis.vertical,
+        children: List.generate(
+          20,
+          (index) => PageFastLaughWidget(index: index,
+            videoUrl: videoUrls[index % videoUrls.length],
+          ),
+        ),
+      ),
+    );
   }
 }

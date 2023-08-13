@@ -15,9 +15,9 @@ class DownloadApi {
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     TrendingApiModel tModel = TrendingApiModel.fromJson(json);
     return <String>[
-      url.baseImageUrl + tModel.result![0].posterPath!,
-      url.baseImageUrl + tModel.result![1].posterPath!,
-      url.baseImageUrl + tModel.result![2].posterPath!
+      url.baseImageUrl + tModel.result![3].posterPath!,
+      url.baseImageUrl + tModel.result![6].posterPath!,
+      url.baseImageUrl + tModel.result![8].posterPath!
     ];
   }
     Future<List<TrendingModel>> getTrendingModels() async {
